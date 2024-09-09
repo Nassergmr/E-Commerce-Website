@@ -1,0 +1,55 @@
+.banner_products {
+  margin: var(--margin-primary);
+
+  .banner_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    .box {
+      background-color: var(--color-5);
+      width: 15%;
+      height: 220px;
+
+      .img_container {
+        width: 100%;
+        height: 150px;
+
+        img {
+          height: 100%;
+          max-width: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      h3 {
+        padding-top: 30px;
+        text-align: center;
+        height: 70px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: var(--color-quaternary);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+    .banner_container {
+        .box {
+            width: 30% !important;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .banner_container {
+        .box {
+            width: 48% !important;
+        }
+    }
+}

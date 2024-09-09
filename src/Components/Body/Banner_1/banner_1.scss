@@ -1,0 +1,122 @@
+.banner_1 {
+  margin: var(--margin-primary);
+  .box_container {
+    display: flex;
+    justify-content: space-between;
+    .box {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 32%;
+      height: 200px;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.18); /* Adjust the opacity as needed */
+        z-index: 1;
+      }
+
+
+      .content {
+        position: absolute;
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        line-height: 1.4;
+        color: white;
+        z-index: 10;
+        p {
+          font-size: 15px;
+         
+        }
+        h3 {
+          font-size: 14px;
+         
+        }
+        .button_cont {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          width: fit-content;
+          position: relative;
+          color: white;
+          z-index: 10;
+
+          &::after {
+            content: "";
+            width: 0;
+            height: 1.5px;
+            background-color: var(--color-secondary);
+            position: absolute;
+            bottom: 0;
+            transition: all 0.3s ease;
+            left: 0;
+          }
+          &:hover p {
+            transition: all 0.3s ease;
+            color: var(--color-secondary);
+          }
+          &:hover i {
+            color: var(--color-secondary);
+          }
+          &:hover::after {
+            width: 100%;
+          }
+          p {
+           
+            font-weight: bold;
+          }
+          i {
+            display: flex;
+            align-items: center;
+           
+          }
+        }
+      }
+
+      &:nth-child(1) {
+        background-image: url("../../../Images/b17\ \(1\).jpg");
+      }
+
+      &:nth-child(2) {
+        background-image: url("../../../Images/b4.jpg");
+      }
+
+      &:nth-child(3) {
+        background-image: url("../../../Images/b16\ \(1\).jpg");
+        background-position: right;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .banner_1 {
+    .box_container {
+      flex-wrap: wrap;
+      gap: 10px;
+      .box {
+        width: 49%;
+        margin: auto;
+        background-position: top;
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .banner_1 {
+    .box_container {
+      gap: 10px;
+      .box {
+        width: 100%;
+      }
+    }
+  }
+}
