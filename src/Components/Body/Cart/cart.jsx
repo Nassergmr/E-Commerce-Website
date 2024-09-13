@@ -1,53 +1,89 @@
-import "./cart.scss";
-import { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  removeFromCart,
-  increaseQuantity,
-  decreaseQuantity,
-} from "../../../Redux/cartSlice";
+/* eslint-disable react/prop-types */
+import { useContext, useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import cart_img from "/Images/Product_Men_Imgs/cart_img.jpg";
-import { CiSquarePlus } from "react-icons/ci";
-import { CiSquareMinus } from "react-icons/ci";
-import { CiSquareRemove } from "react-icons/ci";
+import { CartContext } from "../../../App";
+import { CiSquarePlus, CiSquareMinus, CiSquareRemove } from "react-icons/ci";
+import "./cart.scss";
 
-/* eslint-disable-next-line react/prop-types */
-export default function Cart({ cart, setCart }) {
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart);
+export default function Cart({ cart, setCart, clickedItems, setClickedItems }) {
   const cartRef = useRef(null);
+  const [cartItems, setCartItems] = useContext(CartContext);
+  const [quantities, setQuantities] = useState({});
 
+  // Load cart from localStorage on component mount
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, [setCartItems]);
+
+  // Save cart to localStorage whenever cartItems changes
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    } else {
+      localStorage.removeItem("cart"); // Clear localStorage if cart is empty
+    }
+  }, [cartItems]);
+
+  // Handle closing the cart when clicking outside
   function handle_cart() {
     setCart(!cart);
   }
 
+  // Set initial quantities to 1 for all items in the cart
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (cartRef.current && !cartRef.current.contains(event.target)) {
-        setCart(false);
-      }
-    }
-    if (cart) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "hidden"; // Prevent scrolling when drawer is open
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = ""; // Re-enable scrolling when drawer is closed
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = ""; // Clean up by enabling scrolling on unmount
-    };
-  }, [cart, setCart]);
+    const initialQuantities = cartItems.reduce((acc, item) => {
+      acc[item.id] = quantities[item.id] || 1;
+      return acc;
+    }, {});
+    setQuantities(initialQuantities);
+  }, [cartItems]);
 
-  useEffect(() => {
-    if (cart) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
-    }
-  }, [cart]);
+  // Increase quantity of an item
+  const increaseQuantity = (itemId) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: prevQuantities[itemId] + 1,
+    }));
+    setClickedItems({ ...clickedItems, [itemId]: true });
+  };
+
+  // Decrease quantity of an item
+  const decreaseQuantity = (itemId) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: prevQuantities[itemId] > 1 ? prevQuantities[itemId] - 1 : 1,
+    }));
+  };
+
+  // Remove an item from the cart
+  const removeFromCart = (itemId) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    setClickedItems((prevItems) => ({
+      ...prevItems,
+      [itemId]: false,
+    }));
+    setQuantities((prevQuantities) => {
+      const updatedQuantities = { ...prevQuantities };
+      delete updatedQuantities[itemId];
+      return updatedQuantities;
+    });
+    localStorage.setItem(
+      "items",
+      JSON.stringify({ ...clickedItems, [itemId]: false })
+    );
+  };
+
+  // Calculate total price
+  const calculateTotalPrice = () => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * quantities[item.id],
+      0
+    );
+  };
 
   return (
     <>
@@ -58,36 +94,36 @@ export default function Cart({ cart, setCart }) {
           {cartItems.length === 0 ? (
             <div className="cart_empty">
               <h3>Your cart is empty, start SHOPPING</h3>
-              <img src={cart_img} alt="" />
+              <img src={cart_img} alt="Empty Cart" />
             </div>
           ) : (
             cartItems.map((item, index) => (
               <div key={index} className="cart-item">
                 <div className="img_container">
-                  <img src={item.img} alt={item.title} />
+                  <img src={item.image} alt={item.title} />
                 </div>
                 <div className="details">
-                  <h3>${(item.price * item.quantity).toFixed(2)}</h3>
+                  <h3 className="price">
+                    ${(item.price * quantities[item.id]).toFixed(2)}
+                  </h3>
 
                   <i
                     className="plus_minus_delete"
-                    onClick={() => dispatch(increaseQuantity({ id: item.id }))}
+                    onClick={() => increaseQuantity(item.id)}
                   >
                     <CiSquarePlus />
                   </i>
-
-                  <h3>{item.quantity}</h3>
-
+                  <h3 className="quantity">{quantities[item.id]}</h3>
                   <i
                     className="plus_minus_delete"
-                    onClick={() => dispatch(decreaseQuantity({ id: item.id }))}
+                    onClick={() => decreaseQuantity(item.id)}
                   >
                     <CiSquareMinus />
                   </i>
 
                   <i
                     className="plus_minus_delete"
-                    onClick={() => dispatch(removeFromCart(item))}
+                    onClick={() => removeFromCart(item.id)}
                   >
                     <CiSquareRemove />
                   </i>
@@ -95,6 +131,12 @@ export default function Cart({ cart, setCart }) {
               </div>
             ))
           )}
+          <div
+            className={`${cartItems.length === 0 ? "hidden_total" : "total"}`}
+          >
+            <h3>Total Price: ${calculateTotalPrice().toFixed(2)}</h3>
+            <button>Checkout</button>
+          </div>
         </div>
 
         <i className="close_i" onClick={handle_cart}>

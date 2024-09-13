@@ -1,42 +1,37 @@
+/* eslint-disable react/prop-types */
 import "./new_arrivals.scss";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-import { useGetproduct_dataByNameQuery } from "../../../Redux/product_data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../../Redux/cartSlice";
+import newArrivalsProducts from "../../../Json/new_arrivlas_data.json";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../../../App";
+import { FaRegCheckCircle } from "react-icons/fa";
 
-export default function New_arrivals() {
-  const dispatch = useDispatch();
-
-  const { data, error, isLoading } = useGetproduct_dataByNameQuery(
-    "product-collection-mixes?populate=*"
-  );
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+export default function New_arrivals({ clickedItems, setClickedItems }) {
+  const [cartItems, setCartItems] = useContext(CartContext);
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     responsive: [
       {
         breakpoint: 950, // max-width 950px
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 630, // max-width 630px
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -49,23 +44,46 @@ export default function New_arrivals() {
     ],
   };
 
+  useEffect(() => {
+    const storedItems = localStorage.getItem("items");
+    if (storedItems) {
+      setClickedItems(JSON.parse(storedItems));
+    }
+  }, []);
+
+  const handleAddtoCart = (item) => {
+    let isPresent = false;
+    cartItems.forEach((element) => {
+      if (item.id === element.id) {
+        isPresent = true;
+      }
+    });
+
+    if (isPresent) return;
+
+    setCartItems([...cartItems, item]);
+    setClickedItems((prev) => ({
+      ...prev,
+      [item.id]: true,
+    }));
+
+    localStorage.setItem(
+      "items",
+      JSON.stringify({ ...clickedItems, [item.id]: true })
+    );
+  };
+
   return (
-    <div className="new_arrivals">
+    <div className="new_arrivals" id="new_arrivals">
       <Slider {...settings}>
-        {data.data.map((productData) => {
-          const product = productData.attributes;
+        {newArrivalsProducts.map((item) => {
           return (
-            <div key={productData.id} className="card">
+            <div key={item.id} className="card">
               <div className="img_container">
-                <img
-                  src={`${import.meta.env.VITE_BASE_URL}${
-                    product.img.data[0].attributes.url
-                  }`}
-                  alt={product.title}
-                />
+                <img src={item.image} alt="" />
               </div>
               <div className="content">
-                <h3>{product.title}</h3>
+                <h3>{item.title}</h3>
                 <div className="stars_container">
                   <FaStar
                     className="star_filled"
@@ -85,22 +103,20 @@ export default function New_arrivals() {
                   />
                   <CiStar className="star_empty" />
                 </div>
-                <h5>${product.price}</h5>
+                <h5> ${item.price}</h5>
                 <button
-                  onClick={() =>
-                    dispatch(
-                      addToCart({
-                        id: productData.id,
-                        title: product.title,
-                        price: product.price,
-                        img: `${import.meta.env.VITE_BASE_URL}${
-                          product.img.data[0].attributes.url
-                        }`,
-                      })
-                    )
-                  }
+                  onClick={() => handleAddtoCart(item)}
+                  disabled={clickedItems[item.id]}
                 >
-                  Add To Cart
+                  <span>
+                    {clickedItems[item.id] ? (
+                      <FaRegCheckCircle
+                        style={{ width: "72.58px", height: "12px" }}
+                      />
+                    ) : (
+                      "Add to Cart"
+                    )}
+                  </span>
                 </button>
               </div>
             </div>

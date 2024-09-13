@@ -18,7 +18,7 @@
   }
 
   .slick-next {
-    margin: 0 0 0 50px
+    margin: 0 0 0 50px;
   }
 
   .slick-prev {
@@ -127,7 +127,7 @@
 @media (max-width: 450px) {
   .main_card_container {
     .slick-arrow {
-     display: none !important;
+      display: none !important;
     }
   }
 }

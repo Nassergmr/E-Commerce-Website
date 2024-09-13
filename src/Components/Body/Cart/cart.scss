@@ -1,6 +1,6 @@
 .cart {
   background-color: white;
-  padding: 20px 10px 0px 10px;
+  padding: 20px;
   box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1);
   position: fixed;
   top: 0;
@@ -31,7 +31,7 @@
       display: flex;
       gap: 20px;
       align-items: center;
-      
+
       h3 {
         font-size: 18px;
       }
@@ -48,14 +48,14 @@
   visibility: visible;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .cart {
     width: 70%;
   }
 }
 @media (max-width: 500px) {
   .cart {
-    width: 80%;
+    width: 100%;
   }
 }
 .close_i {
@@ -79,12 +79,19 @@
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-   color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 }
-@media(max-width : 600px) {
+@media (max-width: 600px) {
   .cart-item {
     flex-direction: column;
+    width: 100%;
+  }
+  .total {
+    flex-direction: column !important;
+    gap: 20px;
+  }
+  .total button {
     width: 100%;
   }
 }
@@ -95,4 +102,20 @@
   h3 {
     margin-bottom: 30px;
   }
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 0 0;
+  flex-direction: row;
+}
+.hidden_total {
+  display: none;
+}
+.price {
+  min-width: 70px;
+}
+.quantity {
+  min-width: 22px;
 }

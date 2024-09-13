@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Classic Blue T-shirt",
+    "price": 29.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_1.png"
+  },
+  {
+    "id": 2,
+    "title": "Black Hoodie",
+    "price": 49.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_2.png"
+  },
+  {
+    "id": 3,
+    "title": "Red Sweater",
+    "price": 39.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_3.png"
+  },
+  {
+    "id": 4,
+    "title": "Leather Jacket",
+    "price": 99.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_4.png"
+  },
+  {
+    "id": 5,
+    "title": "Yellow Sweatshirt",
+    "price": 34.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_5.png"
+  },
+  {
+    "id": 6,
+    "title": "White Hoodie",
+    "price": 44.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_6.png"
+  },
+  {
+    "id": 7,
+    "title": "Knitted Sweater",
+    "price": 54.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_7.png"
+  },
+  {
+    "id": 8,
+    "title": "Beige Cardigan",
+    "price": 59.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_8.png"
+  },
+  {
+    "id": 9,
+    "title": "Yellow T-shirt",
+    "price": 24.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_9.png"
+  },
+  {
+    "id": 10,
+    "title": "Black Puffer Jacket",
+    "price": 89.99,
+    "category": "Men's Clothing",
+    "image": "/Images/Product_Men_Imgs/img_10.png"
+  }
+]

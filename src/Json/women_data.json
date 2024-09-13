@@ -1,0 +1,72 @@
+[
+  {
+    "id": 11,
+    "title": "Maxi Dress",
+    "price": 22.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_1.png"
+  },
+  {
+    "id": 12,
+    "title": "Beige Sun Hat",
+    "price": 18.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_2.png"
+  },
+  {
+    "id": 13,
+    "title": "Wrap Dress",
+    "price": 15.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/img_3.png"
+  },
+  {
+    "id": 14,
+    "title": "Button-Down Shirt",
+    "price": 30.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_4.png"
+  },
+  {
+    "id": 15,
+    "title": "Turtleneck Sweater",
+    "price": 25.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_5.png"
+  },
+  {
+    "id": 16,
+    "title": "Midi Skirt",
+    "price": 12.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/img_6.png"
+  },
+  {
+    "id": 17,
+    "title": "White Dress",
+    "price": 55.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_7.png"
+  },
+  {
+    "id": 18,
+    "title": "Blue Summer Dress",
+    "price": 48.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_8.png"
+  },
+  {
+    "id": 19,
+    "title": "Striped Button-Up Shirt",
+    "price": 38.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_9.png"
+  },
+  {
+    "id": 20,
+    "title": "Camisole",
+    "price": 20.0,
+    "category": "Women's Clothing",
+    "image": "/Images/Product_Women_Imgs/Img_10.png"
+  }
+]

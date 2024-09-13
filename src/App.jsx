@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import "./App.scss";
 import Nave_menu from "./Components/Header/Navebar/nave_menu";
 import Navebar from "./Components/Header/Navebar/navebar";
@@ -13,36 +13,50 @@ import Banner_1 from "./Components/Body/Banner_1/banner_1";
 import Banner_2 from "./Components/Body/Banner_2/banner_2";
 import Footer from "./Components/Footer/footer";
 import Cart from "./Components/Body/Cart/cart";
-// import Shopping_cart from "./Components/Body/Shopping_Cart/shopping_cart";
+export const CartContext = createContext(null);
 
 function App() {
   const [menuhide, setMenuhide] = useState(false);
   const [cart, setCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [clickedItems, setClickedItems] = useState({});
 
   return (
     <>
-      <div>
+      <CartContext.Provider value={[cartItems, setCartItems]}>
         <Navebar
           menuhide={menuhide}
           setMenuhide={setMenuhide}
           cart={cart}
           setCart={setCart}
         />
-        <div>
-          <Cart cart={cart} setCart={setCart} />
-        </div>
-        <Nave_menu menuhide={menuhide} setMenuhide={setMenuhide}/>
+        <Cart
+          cart={cart}
+          setCart={setCart}
+          clickedItems={clickedItems}
+          setClickedItems={setClickedItems}
+        />
+        <Nave_menu menuhide={menuhide} setMenuhide={setMenuhide} />
         <Hero />
         <Banner_products />
         <Animated_text />
         <Banner_sm />
-        <New_arrivals />
+        <New_arrivals
+          clickedItems={clickedItems}
+          setClickedItems={setClickedItems}
+        />
         <Banner_1 />
-        <Main_card_men />
+        <Main_card_men
+          clickedItems={clickedItems}
+          setClickedItems={setClickedItems}
+        />
         <Banner_2 />
-        <Main_card_Women />
+        <Main_card_Women
+          clickedItems={clickedItems}
+          setClickedItems={setClickedItems}
+        />
         <Footer />
-      </div>
+      </CartContext.Provider>
     </>
   );
 }

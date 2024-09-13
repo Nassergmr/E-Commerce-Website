@@ -13,9 +13,9 @@ import { useEffect, useRef } from "react";
 export default function Nave_menu({ menuhide, setMenuhide }) {
   const menuRef = useRef(null);
 
-    const toggleMenu = () => {
-      setMenuhide(!menuhide);
-    }
+  const toggleMenu = () => {
+    setMenuhide(!menuhide);
+  };
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -37,13 +37,12 @@ export default function Nave_menu({ menuhide, setMenuhide }) {
 
   return (
     <>
-      {menuhide && (
-        <div
-          className="overlay"
-          onClick={toggleMenu}
-        />
-      )}
-      <nav onClick={toggleMenu} ref={menuRef} className={`nave_menu ${menuhide ? "true" : "false"}`}>
+      {menuhide && <div className="overlay" onClick={toggleMenu} />}
+      <nav
+        onClick={toggleMenu}
+        ref={menuRef}
+        className={`nave_menu ${menuhide ? "true" : "false"}`}
+      >
         <ul>
           <li className="hover">
             <i>

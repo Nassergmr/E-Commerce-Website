@@ -7,12 +7,15 @@ import { IoIosArrowDown } from "react-icons/io";
 import "./nave_menu.scss";
 import logo from "/Images/bird-colorful-logo-gradient-vector_343694-1365.avif";
 import "./navebar.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Modal from "react-modal";
+import { CartContext } from "../../../App";
 
 /* eslint-disable-next-line react/prop-types */
 export default function Navebar({ menuhide, setMenuhide, cart, setCart }) {
+  const [cartItems] = useContext(CartContext);
+
   function handle_menu() {
     setMenuhide(!menuhide);
   }
@@ -185,10 +188,14 @@ export default function Navebar({ menuhide, setMenuhide, cart, setCart }) {
                 <FaRegUser />{" "}
               </i>
 
-              <i onClick={handle_cart}>
-                {" "}
-                <MdOutlineShoppingBag />{" "}
-              </i>
+              <div className="cart_icon" onClick={handle_cart}>
+                <i>
+                  <MdOutlineShoppingBag />
+                </i>
+                <span className="cart_length">
+                  {cartItems.length !== 0 ? cartItems.length : ""}
+                </span>
+              </div>
             </div>
           </div>
         </div>

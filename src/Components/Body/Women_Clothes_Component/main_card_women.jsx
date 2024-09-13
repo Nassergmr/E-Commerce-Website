@@ -1,53 +1,42 @@
+/* eslint-disable react/prop-types */
 import "../../Body/Men_Clothes_Component/main_card_men.scss";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
-import { useGetproduct_dataByNameQuery } from "../../../Redux/product_data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../../Redux/cartSlice";
+import { FaRegCheckCircle } from "react-icons/fa";
+import womenProducts from "../../../Json/women_data.json";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../../../App";
 
-export default function Main_card_Women() {
-  const dispatch = useDispatch();
-
-  const { data, error, isLoading } = useGetproduct_dataByNameQuery(
-    "product-collection-womens?populate=*"
-  );
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
-  // Extract product titles
-  const productTitles = data.data.map(
-    (productData) => productData.attributes.title
-  );
-
+export default function Main_card_Women({ clickedItems, setClickedItems }) {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     responsive: [
       {
         breakpoint: 1020, // max-width 950px
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 950, // max-width 950px
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 630, // max-width 630px
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -60,6 +49,36 @@ export default function Main_card_Women() {
     ],
   };
 
+  const [cartItems, setCartItems] = useContext(CartContext);
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem("items");
+    if (storedItems) {
+      setClickedItems(JSON.parse(storedItems));
+    }
+  }, []);
+
+  const handleAddtoCart = (item) => {
+    let isPresent = false;
+    cartItems.forEach((element) => {
+      if (item.id === element.id) {
+        isPresent = true;
+      }
+    });
+
+    if (isPresent) return;
+
+    setCartItems([...cartItems, item]);
+    setClickedItems((prev) => ({
+      ...prev,
+      [item.id]: true,
+    }));
+
+    localStorage.setItem(
+      "items",
+      JSON.stringify({ ...clickedItems, [item.id]: true })
+    );
+  };
   return (
     <>
       <div className="main_card_container">
@@ -67,9 +86,9 @@ export default function Main_card_Women() {
           <div className="left_container">
             <div className="card">
               {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <h2>Woman's Fashion</h2>
-              {productTitles.map((title, index) => (
-                <p key={index}>{title}</p>
+              <h2>Women's Fashion</h2>
+              {womenProducts.map((item, index) => (
+                <p key={index}>{item.title}</p>
               ))}
             </div>
           </div>
@@ -77,21 +96,14 @@ export default function Main_card_Women() {
 
         <div className="right">
           <Slider {...settings}>
-            {data.data.map((productData) => {
-              const product = productData.attributes;
-
+            {womenProducts.map((item) => {
               return (
-                <div key={productData.id} className="card">
+                <div key={item.id} className="card">
                   <div className="img_container">
-                    <img
-                      src={`${import.meta.env.VITE_BASE_URL}${
-                        product.img.data[0].attributes.url
-                      }`}
-                    />
+                    <img src={item.image} alt="" />
                   </div>
                   <div className="content">
-                    <h3>{product.title}</h3>
-
+                    <h3>{item.title}</h3>
                     <div className="stars_container">
                       <FaStar
                         className="star_filled"
@@ -111,22 +123,20 @@ export default function Main_card_Women() {
                       />
                       <CiStar className="star_empty" />
                     </div>
-                    <h5> ${product.price}</h5>
+                    <h5> ${item.price}</h5>
                     <button
-                      onClick={() =>
-                        dispatch(
-                          addToCart({
-                            id: productData.id,
-                            title: product.title,
-                            price: product.price,
-                            img: `${import.meta.env.VITE_BASE_URL}${
-                              product.img.data[0].attributes.url
-                            }`,
-                          })
-                        )
-                      }
+                      onClick={() => handleAddtoCart(item)}
+                      disabled={clickedItems[item.id]}
                     >
-                      Add To Cart
+                      <span>
+                        {clickedItems[item.id] ? (
+                          <FaRegCheckCircle
+                            style={{ width: "72.58px", height: "12px" }}
+                          />
+                        ) : (
+                          "Add to Cart"
+                        )}
+                      </span>
                     </button>
                   </div>
                 </div>

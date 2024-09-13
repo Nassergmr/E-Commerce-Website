@@ -1,0 +1,72 @@
+[
+  {
+    "id": 21,
+    "title": "Jordan Hoodie",
+    "price": 49.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_1.png"
+  },
+  {
+    "id": 22,
+    "title": "Red Polo Shirt",
+    "price": 29.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_2.png"
+  },
+  {
+    "id": 23,
+    "title": "Christmas Sweater",
+    "price": 39.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_3.png"
+  },
+  {
+    "id": 24,
+    "title": "Polo Shirt",
+    "price": 25.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_4.png"
+  },
+  {
+    "id": 25,
+    "title": "White Blouse",
+    "price": 34.99,
+    "category": "Women's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_5.png"
+  },
+  {
+    "id": 26,
+    "title": "Striped Shirt",
+    "price": 32.99,
+    "category": "Women's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_6.png"
+  },
+  {
+    "id": 27,
+    "title": "Black Sweater",
+    "price": 44.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_7.png"
+  },
+  {
+    "id": 28,
+    "title": "Green T-shirt",
+    "price": 19.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_8.png"
+  },
+  {
+    "id": 29,
+    "title": "Dress Shirt",
+    "price": 35.99,
+    "category": "Men's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_9.png"
+  },
+  {
+    "id": 30,
+    "title": "Black Hoodie",
+    "price": 42.99,
+    "category": "Women's Clothing",
+    "image": "/Images/New_Arrivals_Imgs/Img_10.png"
+  }
+]

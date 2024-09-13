@@ -9,7 +9,9 @@ export default function Banner_sm() {
           <p>All our new arrivals in an exclusive brand selection</p>
         </div>
         <div className="button_cont">
-          <button className="active">New Arrivals</button>
+          <a href="#new_arrivals">
+            <button className="active">New Arrivals</button>
+          </a>
           <a href="#men">
             <button>Men Category</button>
           </a>

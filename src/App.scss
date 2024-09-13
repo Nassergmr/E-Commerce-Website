@@ -7,16 +7,16 @@
   box-sizing: border-box;
 }
 :root {
-  --margin-primary : 7rem 1rem;
+  --margin-primary: 7rem 1rem;
   --color-primary: rgba(241, 243, 245, 255);
   --color-secondary: rgba(211, 62, 87, 255);
   --color-tertiary: rgba(190, 195, 203, 255);
   --color-quaternary: rgba(30, 41, 54, 255);
-  --color-5:rgba(255, 255, 255, 0.5215686275)
+  --color-5: rgba(255, 255, 255, 0.5215686275);
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(110px + 5rem);
+  scroll-padding-top: calc(110px + 2rem);
 }
 body {
   font-family: Arial, sans-serif;

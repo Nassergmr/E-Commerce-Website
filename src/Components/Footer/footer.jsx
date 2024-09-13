@@ -8,9 +8,9 @@ export default function Footer() {
       <div className="row_container">
         <div className="row" style={{ width: "40%" }}>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-            tempore similique ipsam, non eveniet neque earum doloremque
-            voluptatibus.
+            Quality and style in every product is a priority. Shop with us for
+            the latest arrivals and timeless classics, crafted to elevate your
+            fashion experience.
           </p>
           <div className="img_container">
             <img src={footer_img_play} alt="" />

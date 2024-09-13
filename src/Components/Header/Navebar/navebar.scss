@@ -118,7 +118,7 @@
 }
 
 .drop_search {
-  height: 100px;
+  height: 80px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -132,12 +132,11 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    gap: 5px;
 
     .close_i_ {
-      padding: 5px 8px 3px;
+      padding: 5px 6px 0px;
       font-size: 25px;
-      margin-top: 8px;
+      margin-top: 5px;
       color: var(--color-secondary);
 
       &:hover {
@@ -330,4 +329,17 @@
 }
 body.modal-open {
   overflow: hidden;
+}
+.cart_icon {
+  position: relative;
+}
+.cart_length {
+  position: absolute;
+  top: -18px;
+  left: 16px;
+  font-size: 16px;
+  color: var(--color-secondary);
+  padding: 6px 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
