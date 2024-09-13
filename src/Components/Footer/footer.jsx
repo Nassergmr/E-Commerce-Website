@@ -1,6 +1,6 @@
 import "./footer.scss";
-import footer_img_play from "/Images/Product_Men_Imgs/128x128.png";
-import footer_img_app from "/Images/Product_Men_Imgs/appstore.png";
+import footer_img_play from "/Images/128x128.png";
+import footer_img_app from "/Images/appstore.png";
 
 export default function Footer() {
   return (
