@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { IoSearchSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import "./nave_menu.scss";
-import logo from "/Images/bird-colorful-logo-gradient-vector_343694-1365.avif";
+// import logo from "/Images/ecommerce";
 import "./navebar.scss";
 import { useContext, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
@@ -68,7 +68,7 @@ export default function Navebar({ menuhide, setMenuhide, cart, setCart }) {
           <div className="nave_container">
             <div className="logo_menu">
               <a href="" className="logo">
-                <img src={logo} alt="" />
+                <img src="/Images/ecommerce.png" alt="" />
               </a>
               <div onClick={handle_menu} className="cate_arrow">
                 <i>

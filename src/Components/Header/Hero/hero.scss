@@ -207,7 +207,7 @@
         left: unset !important;
       }
     }
-    .hero_container  {
+    .hero_container {
       gap: 30px !important;
       .row_2 {
         display: flex;
@@ -219,7 +219,8 @@
           margin-top: 0 !important;
           height: 150px !important;
           width: 100%;
-          p, h3 {
+          p,
+          h3 {
             font-size: 13px;
           }
           .content {
@@ -233,15 +234,15 @@
           }
         }
       }
-      
+
       .swiper {
         background-color: white;
       }
-      .row_1_A, .row_1_B {
+      .row_1_A,
+      .row_1_B {
         background-image: unset !important;
         text-align: center;
       }
-     
     }
   }
 
@@ -249,19 +250,19 @@
     margin-top: 30px;
     background-color: #ffffff85;
     padding: 2rem 0;
-  
+
     .col_2_container {
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
-  
+
       .box {
         display: flex;
         align-items: center;
         gap: 15px;
         position: relative;
-  
+
         &:not(:first-child)::after {
           content: "";
           position: absolute;
@@ -271,14 +272,14 @@
           left: -30%;
           top: 0;
         }
-  
+
         i {
           font-size: 35px;
           display: flex;
           align-items: center;
           color: rgb(144 149 155);
         }
-  
+
         .content {
           font-size: 14px;
           line-height: 1.3;
@@ -289,24 +290,21 @@
   }
 }
 @media (max-width: 900px) {
-  .col_2_container  {
-      gap: 15px;
-    
+  .col_2_container {
+    gap: 15px;
+
     .box {
       width: 35%;
       margin: auto;
     }
   }
-
 }
 @media (max-width: 500px) {
-  .col_2_container  {
+  .col_2_container {
     gap: 30px;
     .box {
       width: 100%;
       margin-left: 15px;
-
     }
   }
-
 }

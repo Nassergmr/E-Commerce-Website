@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import cart_img from "/Images/Product_Men_Imgs/cart_img.jpg";
+import cart_img from "/Images/cart_img.jpg";
 import { CartContext } from "../../../App";
 import { CiSquarePlus, CiSquareMinus, CiSquareRemove } from "react-icons/ci";
 import "./cart.scss";

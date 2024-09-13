@@ -1,64 +1,64 @@
 .banner_2 {
-    margin: var(--margin-primary);
-    .box_container {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      .box {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 200px;
-        position: relative;
-  
+  margin: var(--margin-primary);
+  .box_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    .box {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 200px;
+      position: relative;
+
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+        line-height: 1.8;
+        color: var(--color-quaternary);
+        p {
+          font-size: 15px;
+        }
+        h2 {
+          font-size: 30px;
+        }
+        h3 {
+          font-size: 16px;
+        }
+        span {
+          color: var(--color-secondary);
+        }
+      }
+
+      &:nth-child(1) {
+        background-image: url("../../../Images/banner-21.jpg");
+      }
+
+      &:nth-child(2) {
+        background-image: url("../../../Images/banner-22.jpg");
         .content {
-          position: absolute;
-          top: 50%;
-          left: 5%;
-          transform: translateY(-50%);
-          line-height: 1.8;
-          color: var(--color-quaternary);
-          p {
-            font-size: 15px;
-          }
-          h2 {
-            font-size: 30px;
-          }
-          h3 {
-            font-size: 16px;
-          }
-          span {
-            color: var(--color-secondary);
-          }
-        }
-  
-        &:nth-child(1) {
-          background-image: url("../../../Images/Product_Men_Imgs/banner-21.jpg");
-        }
-  
-        &:nth-child(2) {
-          background-image: url("../../../Images/Product_Men_Imgs/banner-22.jpg");
-          .content {
-            color: white;
-          }
+          color: white;
         }
       }
     }
   }
-  
-  @media (max-width: 800px) {
-    .banner_2 {
-      .box_container {
-        flex-wrap: wrap;
-        gap: 10px;
-        .box {
-          width: 100%;
-          margin: auto;
-        }
+}
+
+@media (max-width: 800px) {
+  .banner_2 {
+    .box_container {
+      flex-wrap: wrap;
+      gap: 10px;
+      .box {
+        width: 100%;
+        margin: auto;
       }
     }
   }
+}
 //   @media (max-width: 550px) {
 //     .banner_1 {
 //       .box_container {
@@ -69,4 +69,3 @@
 //       }
 //     }
 //   }
-  
