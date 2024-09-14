@@ -3,7 +3,6 @@ import "./App.scss";
 import Nave_menu from "./Components/Header/Navebar/nave_menu";
 import Navebar from "./Components/Header/Navebar/navebar";
 import Hero from "../src/Components/Header/Hero/hero";
-import Banner_products from "./Components/Body/Banner_Products/banner_products";
 import Animated_text from "./Components/Body/Animated_Text/animated_text";
 import Banner_sm from "./Components/Body/Banner_3/banner_sm";
 import Main_card_men from "./Components/Body/Men_Clothes/men";
@@ -38,7 +37,6 @@ function App() {
         />
         <Nave_menu menuhide={menuhide} setMenuhide={setMenuhide} />
         <Hero />
-        <Banner_products />
         <Animated_text />
         <Banner_sm />
         <New_arrivals
